@@ -4,7 +4,7 @@ A small Minecraft-inspired browser clicker!! WOOOO
 
 Open `index.html` in a browser to play. Progress is saved locally in your browser.
 
-Made by [djinq](https://djinq.dev)
+Made by djinq ~ [djinq.dev](https://djinq.dev)
 
 ## Credits
 
