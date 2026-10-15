@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8bc96b">
+  <title>Minecraft Diamond Clicker ~ made by djinq</title>
+  <meta name="description" content="Minecraft Diamond Clicker ~ made by djinq">
+  <meta property="og:title" content="Minecraft Diamond Clicker ~ made by djinq">
+  <meta property="og:description" content="Minecraft Diamond Clicker ~ made by djinq">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Minecraft Diamond Clicker ~ made by djinq">
+  <meta name="twitter:description" content="Minecraft Diamond Clicker ~ made by djinq">
+  <link rel="icon" type="image/png" href="assets/minecraft-diamond-transparent.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+    <div id="announceRegion" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Minecraft Diamond Clicker home">
+        <img src="assets/minecraft-diamond-transparent.png" alt="" class="brand-diamond">
+        <span><strong>CLICKER</strong></span>
+      </a>
+      <div class="topbar-actions">
+        <span class="save-indicator"><i></i><span id="saveStatus">Auto-saving locally</span></span>
+        <button id="resetButton" class="topbar-reset" type="button">Start over</button>
+      </div>
+    </header>
+
+    <section id="top" class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">MINE, UPGRADE, REPEAT</p>
+        <h1>Diamond<br><span>Clicker</span></h1>
+        <p>Mine diamonds by hand, build a faster setup, and turn one shiny gem into a proper Minecraft idle run.</p>
+        <div class="hero-chips" aria-label="Game features"><span>Manual mining</span><span>Auto miners</span><span>Local save</span></div>
+      </div>
+      <div class="hero-stats" aria-label="Current progress">
+        <article class="metric-card metric-card-large"><p class="metric-label">DIAMONDS MINED</p><p id="scoreHero" class="metric-value">0</p></article>
+        <article class="metric-card"><p class="metric-label">PER CLICK</p><p id="pointsPerClickHero" class="metric-value">1</p></article>
+        <article class="metric-card"><p class="metric-label">PER SECOND</p><p id="pointsPerSecondHero" class="metric-value">0</p></article>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <section class="click-panel panel bento-click">
+        <div class="section-heading"><div><p class="eyebrow">DIAMOND MINE</p><h2>Mine a diamond</h2></div><div id="statusMessage" class="status-chip" aria-live="polite">Ready to mine</div></div>
+        <div class="click-stage">
+          <div id="clickFeedbackLayer" class="click-feedback-layer" aria-hidden="true"></div>
+          <button id="clickButton" class="click-button" type="button" aria-label="Mine a diamond"><span class="diamond-frame" aria-hidden="true"><img src="assets/minecraft-diamond-transparent.png" alt="" class="diamond-image"></span><span class="click-text">MINE DIAMOND</span></button>
+        </div>
+      </section>
+
+      <section class="stats-panel panel bento-stats">
+        <div class="section-heading"><div><p class="eyebrow">YOUR STASH</p><h2>Mining stats</h2></div></div>
+        <div class="stats-grid">
+          <article class="stat-card stat-card-wide"><p class="stat-label">DIAMOND STASH</p><p id="scoreLarge" class="stat-value">0</p></article>
+          <article class="stat-card"><p class="stat-label">TOTAL MINES</p><p id="totalClicks" class="stat-value">0</p></article>
+          <article class="stat-card"><p class="stat-label">DIAMONDS / CLICK</p><p id="pointsPerClickLarge" class="stat-value">1</p></article>
+          <article class="stat-card"><p class="stat-label">AUTO / SECOND</p><p id="autoPointsPerSecond" class="stat-value">0</p></article>
+        </div>
+      </section>
+
+      <section class="shop-panel panel bento-shop"><div class="section-heading"><div><p class="eyebrow">UPGRADES</p><h2>Pick your next boost</h2></div></div><div id="shopList" class="shop-list"></div></section>
+
+      <div class="dashboard-side-stack">
+        <section class="progress-panel panel bento-progress">
+          <div class="section-heading"><div><p class="eyebrow">WHAT'S NEXT</p><h2>Your next goal</h2></div></div>
+          <div class="progress-stack">
+            <article class="guide-card"><p class="guide-label">NEXT UPGRADE</p><p id="nextUpgradeName" class="guide-title">Iron Pickaxe</p><p id="nextUpgradeMeta" class="guide-copy">Cost 15</p><p id="nextUpgradeGap" class="guide-note">15 diamonds needed</p></article>
+            <article class="guide-card"><p class="guide-label">NEXT ACHIEVEMENT</p><p id="nextAchievementName" class="guide-title">First Diamond</p><p id="nextAchievementCopy" class="guide-copy">Mine your first diamond.</p><div class="progress-meter" aria-hidden="true"><span id="nextAchievementBar" class="progress-meter-fill"></span></div><p id="nextAchievementMeta" class="guide-note">0% complete</p></article>
+          </div>
+        </section>
+
+        <section class="achievements-panel panel bento-achievements game-data-only"><div class="section-heading"><div><p class="eyebrow">ACHIEVEMENTS</p><h2>Mining milestones</h2></div></div><div id="achievementList" class="achievement-list"></div></section>
+
+        <section class="settings-panel panel bento-settings game-data-only">
+          <div class="section-heading"><div><p class="eyebrow">GAME SETTINGS</p><h2>Control room</h2></div></div>
+          <div class="settings-stack">
+            <div class="settings-card"><p class="settings-title">LOCAL SAVE</p><p class="settings-copy">Your diamond stash saves automatically in this browser.</p></div>
+            <div class="settings-card toggle-card"><div><p class="settings-title">PERFORMANCE MODE</p><p class="settings-copy">Reduces visual effects for slower devices.</p></div><button id="effectsToggle" class="toggle-button" type="button" aria-pressed="false">Performance mode off</button></div>
+            <div class="settings-card toggle-card"><div><p class="settings-title">EXACT NUMBERS</p><p class="settings-copy">Show full diamond counts instead of compact values.</p></div><button id="numbersToggle" class="toggle-button" type="button" aria-pressed="false">Exact numbers off</button></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <a class="builder-credit" href="https://djinq.dev" target="_blank" rel="noreferrer">built by djinq ↗</a>
+  </main>
+
+  <dialog id="resetDialog" class="reset-dialog"><form method="dialog" class="dialog-card"><p class="dialog-title">Reset your diamond stash?</p><p class="dialog-copy">This removes saved diamonds, upgrades, and achievements from this browser.</p><div class="dialog-actions"><button class="ghost-button" type="submit" value="cancel">Cancel</button><button class="danger-button" type="submit" value="confirm">Reset progress</button></div></form></dialog>
+
+  <template id="upgradeTemplate"><article class="shop-card"><div class="shop-card-top"><div><div class="shop-title-row"><p class="shop-title"></p><span class="shop-level"></span></div><p class="shop-description"></p></div><span class="shop-effect"></span></div><div class="shop-card-bottom"><p class="shop-cost"><span class="shop-cost-value"></span> diamonds</p><button class="shop-button" type="button">Upgrade</button></div></article></template>
+  <template id="achievementTemplate"><article class="achievement-card"><div><p class="achievement-title"></p><p class="achievement-description"></p></div><span class="achievement-state"></span></article></template>
+  <script src="script.js"></script>
+</body>
+</html>
