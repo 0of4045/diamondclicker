@@ -1,3 +1,5 @@
+<img width="1024" height="107" alt="diamondclicker" src="https://github.com/user-attachments/assets/34a76654-eadb-4eff-92ea-cfc3b956ae8d" />
+
 # Diamond Clicker
 
 A small Minecraft-inspired browser clicker!! WOOOO
